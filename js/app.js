@@ -12,22 +12,28 @@ function result(){
     let output = document.querySelector("#output");
     let result = document.querySelector("#result");
     let bmi = weight/((height*height)/10000);
-    if (male || female){
-        if (bmi >= 25){
-            result.innerHTML = "overweight";
-        } else if (bmi < 25 && bmi >= 18.5){
-            result.innerHTML = "normal weight";
-        } else if (bmi < 18.5){
-            result.innerHTML = "underweight";
+    if (weight <= 0) {
+        result.innerHTML = "Incorrect weight";
+    } else if (height <= 0) {
+        result.innerHTML = "Incorrect height";
+    } else {
+        if (male || female){
+            if (bmi >= 25){
+                result.innerHTML = "overweight";
+            } else if (bmi < 25 && bmi >= 18.5){
+                result.innerHTML = "normal weight";
+            } else if (bmi < 18.5){
+                result.innerHTML = "underweight";
+            }
+        } else if (child){
+            if (bmi >= 85){
+                result.innerHTML = "overweight";
+            } else if (bmi < 85 && bmi >= 5){
+                result.innerHTML = "normal weight";
+            } else if (bmi < 5){
+                result.innerHTML = "underweight";
+            }
         }
-    } else if (child){
-        if (bmi >= 85){
-            result.innerHTML = "overweight";
-        } else if (bmi < 85 && bmi >= 5){
-            result.innerHTML = "normal weight";
-        } else if (bmi < 5){
-            result.innerHTML = "underweight";
-        }
+        output.innerHTML = bmi.toFixed(2);
     }
-    output.innerHTML = bmi.toFixed(2);
 }
